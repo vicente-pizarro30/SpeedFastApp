@@ -1,17 +1,18 @@
 public class PedidoExpress extends Pedido {
 
-    public PedidoExpress(int idPedido, String direccionEntrega) {
-        super(idPedido, direccionEntrega, "Compra Express");
+    public PedidoExpress(int idPedido) {
+        super(idPedido);
     }
 
-    // SOBREESCRITURA (Override)
+    @Override
+    public void calcularTiempoEntrega() {
+        System.out.println("Tiempo de entrega (Express): Menos de 2 horas.");
+    }
+
     @Override
     public void asignarRepartidor() {
-        System.out.println("-> Pedido #" + idPedido + " [EXPRESS]: Escaneando GPS para asignar al repartidor más cercano con disponibilidad inmediata.");
-    }
-
-    // SOBRECARGA (Overload)
-    public void asignarRepartidor(String nombreRepartidor) {
-        System.out.println("-> Pedido #" + idPedido + " [EXPRESS]: El repartidor " + nombreRepartidor + " estaba a 2 minutos. Asignación inmediata completada.");
+        this.repartidor = "Repartidor en Bicicleta";
+        this.historial.add("Ciclista asignado automáticamente.");
+        System.out.println("Asignación automática: Ciclista para el pedido #" + idPedido);
     }
 }
